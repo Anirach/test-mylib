@@ -6,9 +6,9 @@ Transform the current frontend-only React TypeScript book management app into a 
 ## Phase 1: Backend Foundation Setup
 
 ### Task 1.1: Backend Project Structure
-- [ ] Create `backend/` directory in project root
-- [ ] Initialize Node.js project with TypeScript
-- [ ] Install core dependencies:
+- [x] Create `backend/` directory in project root
+- [x] Initialize Node.js project with TypeScript
+- [x] Install core dependencies:
   ```bash
   cd backend
   npm init -y
@@ -17,99 +17,99 @@ Transform the current frontend-only React TypeScript book management app into a 
   npm install -D typescript @types/node @types/express @types/cors nodemon ts-node
   npm install -D jest @types/jest ts-jest supertest @types/supertest
   ```
-- [ ] Setup TypeScript configuration (`tsconfig.json`)
-- [ ] Create basic Express server structure
-- [ ] Setup environment variables configuration
+- [x] Setup TypeScript configuration (`tsconfig.json`)
+- [x] Create basic Express server structure
+- [x] Setup environment variables configuration
 
 **Files to create:**
-- `backend/package.json`
-- `backend/tsconfig.json`
-- `backend/.env`
-- `backend/src/app.ts`
-- `backend/src/server.ts`
+- [x] `backend/package.json`
+- [x] `backend/tsconfig.json`
+- [x] `backend/.env`
+- [x] `backend/src/app.ts`
+- [x] `backend/src/server.ts`
 
 ### Task 1.2: Database Schema Design with Prisma
-- [ ] Initialize Prisma in backend
-- [ ] Design database schema for books management:
+- [x] Initialize Prisma in backend
+- [x] Design database schema for books management:
   - Books table (id, title, author, isbn, genre, description, coverImageUrl, pdfFileUrl, status, dateAdded, createdAt, updatedAt)
   - LendingInfo table (id, bookId, borrowerName, borrowerContact, dateLent, expectedReturn, actualReturn)
   - Categories table (id, name, description)
   - Users table (optional for future expansion)
-- [ ] Create Prisma schema file
-- [ ] Generate and run initial migration
-- [ ] Seed database with sample data
+- [x] Create Prisma schema file
+- [x] Generate and run initial migration
+- [x] Seed database with sample data
 
 **Files to create:**
-- `backend/prisma/schema.prisma`
-- `backend/prisma/migrations/`
-- `backend/prisma/seed.ts`
+- [x] `backend/prisma/schema.prisma`
+- [x] `backend/prisma/migrations/`
+- [x] `backend/prisma/seed.ts`
 
 ### Task 1.3: Database Models and Services
-- [ ] Create TypeScript interfaces matching Prisma models
-- [ ] Implement BookService class with CRUD operations
-- [ ] Implement LendingService for lending/borrowing operations
-- [ ] Create database connection utilities
-- [ ] Implement error handling for database operations
+- [x] Create TypeScript interfaces matching Prisma models
+- [x] Implement BookService class with CRUD operations
+- [x] Implement LendingService for lending/borrowing operations
+- [x] Create database connection utilities
+- [x] Implement error handling for database operations
 
 **Files to create:**
-- `backend/src/types/index.ts`
-- `backend/src/services/BookService.ts`
-- `backend/src/services/LendingService.ts`
-- `backend/src/utils/database.ts`
-- `backend/src/middleware/errorHandler.ts`
+- [x] `backend/src/types/index.ts`
+- [x] `backend/src/services/BookService.ts`
+- [x] `backend/src/services/LendingService.ts`
+- [x] `backend/src/utils/database.ts`
+- [x] `backend/src/middleware/errorHandler.ts`
 
 ## Phase 2: Backend API Development
 
 ### Task 2.1: Books API Endpoints
-- [ ] **GET /api/books** - Get all books with filtering and pagination
-- [ ] **GET /api/books/:id** - Get single book by ID
-- [ ] **POST /api/books** - Create new book
-- [ ] **PUT /api/books/:id** - Update existing book
-- [ ] **DELETE /api/books/:id** - Delete book
-- [ ] **GET /api/books/search** - Search books by title/author
-- [ ] **GET /api/books/status/:status** - Filter books by status
+- [x] **GET /api/books** - Get all books with filtering and pagination
+- [x] **GET /api/books/:id** - Get single book by ID
+- [x] **POST /api/books** - Create new book
+- [x] **PUT /api/books/:id** - Update existing book
+- [x] **DELETE /api/books/:id** - Delete book
+- [x] **GET /api/books/search** - Search books by title/author
+- [x] **GET /api/books/status/:status** - Filter books by status
 
 **Files to create:**
-- `backend/src/routes/books.ts`
-- `backend/src/controllers/BookController.ts`
-- `backend/src/validators/bookValidators.ts`
+- [x] `backend/src/routes/books.ts`
+- [x] `backend/src/controllers/BookController.ts`
+- [x] `backend/src/validators/bookValidators.ts`
 
 ### Task 2.2: Lending API Endpoints
-- [ ] **POST /api/books/:id/lend** - Lend a book
-- [ ] **PUT /api/books/:id/return** - Return a lent book
-- [ ] **GET /api/lending/history** - Get lending history
+- [x] **POST /api/books/:id/lend** - Lend a book
+- [x] **PUT /api/books/:id/return** - Return a lent book
+- [x] **GET /api/lending/history** - Get lending history
 - [ ] **GET /api/lending/overdue** - Get overdue books
 
 **Files to create:**
-- `backend/src/routes/lending.ts`
-- `backend/src/controllers/LendingController.ts`
-- `backend/src/validators/lendingValidators.ts`
+- [x] `backend/src/routes/lending.ts`
+- [x] `backend/src/controllers/LendingController.ts`
+- [x] `backend/src/validators/lendingValidators.ts`
 
 ### Task 2.3: File Upload and Management
-- [ ] **POST /api/upload/cover** - Upload book cover images
-- [ ] **POST /api/upload/pdf** - Upload PDF files
-- [ ] **DELETE /api/upload/:filename** - Delete uploaded files
-- [ ] Setup multer for file handling
-- [ ] Implement file validation and security
+- [x] **POST /api/upload/cover** - Upload book cover images
+- [x] **POST /api/upload/pdf** - Upload PDF files
+- [x] **DELETE /api/upload/:filename** - Delete uploaded files
+- [x] Setup multer for file handling
+- [x] Implement file validation and security
 
 **Files to create:**
-- `backend/src/routes/upload.ts`
-- `backend/src/controllers/UploadController.ts`
-- `backend/src/middleware/upload.ts`
-- `backend/uploads/` directory structure
+- [x] `backend/src/routes/upload.ts`
+- [x] `backend/src/controllers/UploadController.ts`
+- [x] `backend/src/middleware/upload.ts`
+- [x] `backend/uploads/` directory structure
 
 ### Task 2.4: API Documentation and Validation
-- [ ] Install and setup Swagger for API documentation
-- [ ] Add input validation using Joi or Zod
-- [ ] Implement request/response schemas
-- [ ] Add API rate limiting
-- [ ] Setup CORS properly for frontend integration
+- [x] Install and setup Swagger for API documentation
+- [x] Add input validation using Joi or Zod
+- [x] Implement request/response schemas
+- [x] Add API rate limiting
+- [x] Setup CORS properly for frontend integration
 
 **Files to create:**
-- `backend/src/swagger/swagger.ts`
-- `backend/src/swagger/definitions.yaml`
-- `backend/src/middleware/validation.ts`
-- `backend/src/middleware/rateLimit.ts`
+- [x] `backend/src/swagger/swagger.ts`
+- [ ] `backend/src/swagger/definitions.yaml`
+- [x] `backend/src/middleware/validation.ts`
+- [x] `backend/src/middleware/rateLimit.ts`
 
 ## Phase 3: Backend Testing
 

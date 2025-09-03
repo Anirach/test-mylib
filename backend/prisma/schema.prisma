@@ -1,0 +1,93 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Book model
+model Book {
+  id            String      @id @default(cuid())
+  title         String
+  author        String
+  isbn          String?     @unique
+  genre         String?
+  description   String?
+  coverImageUrl String?
+  pdfFileUrl    String?
+  status        BookStatus  @default(OWNED)
+  dateAdded     DateTime    @default(now())
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  
+  // Relations
+  lendingInfo   LendingInfo[]
+  categoryId    String?
+  category      Category?   @relation(fields: [categoryId], references: [id])
+  
+  @@map("books")
+}
+
+// Lending information model
+model LendingInfo {
+  id             String    @id @default(cuid())
+  bookId         String
+  borrowerName   String
+  borrowerContact String
+  dateLent       DateTime  @default(now())
+  expectedReturn DateTime
+  actualReturn   DateTime?
+  isReturned     Boolean   @default(false)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  
+  // Relations
+  book           Book      @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  
+  @@map("lending_info")
+}
+
+// Category model for organizing books
+model Category {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations
+  books       Book[]
+  
+  @@map("categories")
+}
+
+// User model (for future authentication)
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  password  String
+  role      UserRole @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("users")
+}
+
+// Enums
+enum BookStatus {
+  OWNED
+  LENT
+  WISHLIST
+  LOST
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
